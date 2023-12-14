@@ -1,8 +1,9 @@
 %{
     #include <iostream>
     using std::cout;
-    enum{SOME,VALUE,ALL,MIN,MAX,EXACTLY,THAT,NOT,AND,OR,ID,PROP,NUM}
 %}
+
+%option noyywrap
 
 delim [ /t/n]
 brancos {delim}+
@@ -24,11 +25,10 @@ or "OR"|"or"
 
 stringcomposta  {maiusculas}({letra})+
 id           {stringcomposta}("_"?{stringcomposta})*
-prop            ("has"{stringcomposta})|("is"{stringcomposta}"Of")
+prop         (\h\a\s{stringcomposta})|(\i\s{stringcomposta}"Of")
 
 %%
-
-{brancos}	  ;
+[\t\n]+
 {some} |        
 {value} |      
 {all} |     
@@ -39,10 +39,12 @@ prop            ("has"{stringcomposta})|("is"{stringcomposta}"Of")
 {not} |      
 {or} |       
 {and}         cout << YYText() << ": palavra chave";
-{id}          cout << YYText() << ": classe";
-{prop}        cout << YYText() << ": propriedade";
-{numero}      cout << YYText() << ": inteiro";
-
+{id} cout << "classe\n";
+{prop} cout << "propriedade\n";
+{numero}  cout << "numero\n";
 %%
 
-
+int main(){
+    yyFlexLexer lexer;
+    lexer.yylex();
+}

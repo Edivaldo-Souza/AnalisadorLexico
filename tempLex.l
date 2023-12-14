@@ -1,7 +1,7 @@
 %{
     #include <iostream>
     using std::cout;
-    enum{SOME,VALUE,ALL,MIN,MAX,EXACTLY,THAT,NOT,AND,OR,ClASSE,PROP,NUM}
+    enum{SOME,VALUE,ALL,MIN,MAX,EXACTLY,THAT,NOT,AND,OR,ID,PROP,NUM}
 %}
 
 delim [ /t/n]
@@ -23,25 +23,25 @@ and "AND"|"and"
 or "OR"|"or"
 
 stringcomposta  {maiusculas}({letra})+
-classe           {stringcomposta}("_"?{stringcomposta})*
+id           {stringcomposta}("_"?{stringcomposta})*
 prop            ("has"{stringcomposta})|("is"{stringcomposta}"Of")
 
 %%
 
 {brancos}	  ;
-{some}        return SOME;
-{value}       return VALUE;
-{all}         return ALL;
-{min}         return MIN;
-{max}         return MAX;
-{exactly}     return EXACTLY;
-{that}        return THAT;
-{not}         return NOT;
-{or}          return OR;
-{and}         return AND;
-
-{prop}        return PROP;
-{numero}      return NUM;
+{some} |        
+{value} |      
+{all} |     
+{min} |        
+{max} |       
+{exactly} |    
+{that} |        
+{not} |      
+{or} |       
+{and}         cout << YYText() << ": palavra chave";
+{id}          cout << YYText() << ": classe";
+{prop}        cout << YYText() << ": propriedade";
+{numero}      cout << YYText() << ": inteiro";
 
 %%
 
