@@ -5,7 +5,7 @@
     using std::ifstream;
     using std::ofstream;
     using std::cout;
-    int numClasses=0,numPalavrasChave=0,numPropriedades=0,numSimbolos=0,numInteiros=0,numIndividuos=0,numTipos=0;
+    int numClasses=0,numPalavrasChave=0,numPropriedades=0,numInteiros=0,numIndividuos=0,numTipos=0;
 %}
 
 %option noyywrap
@@ -67,7 +67,7 @@ individuo       {id}({numero}+)
 \"            return SYMBOL;
 {integer}     return TYPE;
 {namespaces}  return TYPE;
-{tipos}       return TYPE;
+{tipos}       return KEYWORD;
 {individuo}   return INDIVIDUAL;
 
            
@@ -109,8 +109,7 @@ int main(int argc, char** argv ){
                 numPropriedades++;
                 break;
             case SYMBOL:
-                fout <<"<SYMBOL,"<<lexer.YYText()<<">\n";
-                numSimbolos++; 
+                fout <<"<SYMBOL,"<<lexer.YYText()<<">\n"; 
                 break;
             case INDIVIDUAL:
                 fout <<"<INDIVIDUAL,"<<lexer.YYText()<<">\n";
@@ -129,7 +128,6 @@ int main(int argc, char** argv ){
     tabela << "Palavras reservadas,"<<numPalavrasChave<<"\n";
     tabela << "Classes,"<<numClasses<<"\n";
     tabela << "Propriedades,"<<numPropriedades<<"\n";
-    tabela << "Simbolos,"<<numSimbolos<<"\n";
     tabela << "Individuos,"<<numIndividuos<<"\n";
     tabela << "Tipos,"<<numTipos<<"\n";
     tabela << "Numeros,"<<numInteiros<<"\n";   
