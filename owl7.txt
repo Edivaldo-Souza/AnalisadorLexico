@@ -32,7 +32,7 @@ Class: Employee
 Class: Pizza
 
     SubClassOf:
-        hasBase some PizzaBase,
+        isBaseOf some PizzaBase,
         hasCaloricContent some xsd:integer
     
     DisjointClasses: 

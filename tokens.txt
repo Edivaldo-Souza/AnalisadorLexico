@@ -40,6 +40,7 @@
 <CLASS,Person>
 <KEYWORD,and>
 <SYMBOL,(>
+<PROP,ssn>
 <KEYWORD,min>
 <NUM,1>
 <TYPE,xsd:string>
@@ -55,7 +56,7 @@
 <KEYWORD,Class:>
 <CLASS,Pizza>
 <KEYWORD,SubClassOf:>
-<PROP,hasBase>
+<PROP,isBaseOf>
 <KEYWORD,some>
 <CLASS,PizzaBase>
 <SYMBOL,,>
@@ -205,6 +206,7 @@
 <CLASS,TomatoTopping>
 <SYMBOL,,>
 <PROP,hasTopping>
+<PROP,only>
 <SYMBOL,(>
 <CLASS,MozzarellaTopping>
 <KEYWORD,or>
@@ -244,6 +246,7 @@
 <CLASS,TomatoTopping>
 <SYMBOL,,>
 <PROP,hasTopping>
+<PROP,only>
 <SYMBOL,(>
 <CLASS,MozzarellaTopping>
 <KEYWORD,or>
@@ -286,6 +289,7 @@
 <KEYWORD,and>
 <SYMBOL,(>
 <PROP,hasTopping>
+<PROP,only>
 <SYMBOL,(>
 <CLASS,CheeseTopping>
 <KEYWORD,or>

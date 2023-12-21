@@ -18,6 +18,9 @@ letra [A-Za-z]
 digito [0-9]
 numero {digito}+
 
+minusculas_sem_i [abcdefghjklmnopqrstuvxyz]
+minusculas_sem_s [abcdefghijklmnopqrtuvxyz]
+
 some "SOME"|"some"
 value "VALUE"|"value"
 all "ALL"|"all"
@@ -35,7 +38,7 @@ tipos ("Class"|"EquivalentTo"|"Individuals"|"SubClassOf"|"DisjointClasses")":"
 
 stringcomposta  {maiusculas}({letra})+
 id              {stringcomposta}("_"?{stringcomposta})*
-prop            {minusculas}+({stringcomposta})+
+prop            "ssn"|("is"{stringcomposta}*"Of")|({minusculas_sem_i}{minusculas_sem_s}{minusculas}*({stringcomposta})*)
 individuo       {id}({numero}+)
 
 %%
@@ -91,11 +94,11 @@ int main(int argc, char** argv ){
         }
 
     }
-    int lookahead;
+    int leitor;
     
     tabela << "Categoria do Token,Incidencias\n";
-    while((lookahead = lexer.yylex())!=0){
-        switch(lookahead){
+    while((leitor = lexer.yylex())!=0){
+        switch(leitor){
             case KEYWORD: 
                 fout <<"<KEYWORD,"<<lexer.YYText()<<">\n";
                 numPalavrasChave++; 

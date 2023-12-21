@@ -1,5 +1,5 @@
 ---------- Para Rodar o Programa ----------
-1° Na pasta do projeto rode o comando "flex++ test.l"
+1° Na pasta do projeto rode o comando "flex++ lex.l"
 2° Rode o comando "g++ lex.yy.cc -o analisador" para gerar o executável
 3° Rode o executável com o comando "./analisador owl7.txt"
 
